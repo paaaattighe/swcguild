@@ -1,3 +1,0 @@
-the quick brown fox jumps over the lazy dog. 
-
-Example Text: Ward: adding a new line of text
