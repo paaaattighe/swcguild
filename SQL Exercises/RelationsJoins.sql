@@ -6,8 +6,11 @@
 --Get a list of each employee and their territories.
 SELECT FirstName, LastName, EmployeeTerritories.TerritoryID
 FROM Employees
-	INNER JOIN EmployeeTerritories
+	RIGHT JOIN EmployeeTerritories
 	ON Employees.EmployeeID = EmployeeTerritories.EmployeeID
+
+SELECT *
+FROM EmployeeTerritories
 
 --Get the Customer Name, Order Date, and each order detail’s Product name for USA customers only.
 SELECT Customers.ContactName, CompanyName, OrderDate, ProductName, Country
@@ -54,6 +57,6 @@ SELECT OrderID, CustomerID, Orders.EmployeeID, LastName, FirstName
 FROM Orders	
 	LEFT JOIN Employees
 		ON Orders.EmployeeID = Employees.EmployeeID
-WHERE ORders.EmployeeID IS NULL OR LastName LIKE 'S%'
+WHERE Orders.EmployeeID IS NULL OR LastName LIKE 'S%'
 
 

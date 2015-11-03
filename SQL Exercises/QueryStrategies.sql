@@ -3,6 +3,11 @@
 
 --Exercises in Query Strategies
 
+SELECT LastName, FirstName, [Grant/Hour] = ([Grant].Amount/ 2080) 
+FROM Employee
+	INNER JOIN [Grant]
+	ON Employee.EmpID = [Grant].EmpID
+
 --Write a query to show every combination of employee and location.SELECT *
 From Location
 	INNER JOIN Employee
