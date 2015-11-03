@@ -41,34 +41,41 @@ namespace WARMUPS
         // String Warmup 5
         public string MultipleEndings(string str)
         {
-            if (str.Length > 2)
-            {
-                return (str.Substring(3, 2) + str.Substring(3, 2) + str.Substring(3, 2));
-            }
-            else
-            {
-                return (str.Substring(0, 2) + str.Substring(0, 2) + str.Substring(0, 2));
-            }
+            string str1 = str.Substring(str.Length - 2, 2);
+            return str1 + str1 + str1;
+
+            //if (str.Length > 2)
+            //{
+            //    return (str.Substring(3, 2) + str.Substring(3, 2) + str.Substring(3, 2));
+            //}
+            //else
+            //{
+            //    return (str.Substring(0, 2) + str.Substring(0, 2) + str.Substring(0, 2));
+            //}
 
         }
 
         //String Warmup 6
         public string FirstHalf(string str)
         {
-            if (str.Length > 6)
-            {
-                return str.Substring(0, 5);
-            }
-            else
-            {
-                return str.Substring(0, 3);
-            }
+            string str1 = str.Substring(0, str.Length/2);
+            return str1;
+            //if (str.Length > 6)
+            //{
+            //    return str.Substring(0, 5);
+            //}
+            //else
+            //{
+            //    return str.Substring(0, 3);
+            //}
         }
 
         //String Warmup 7
         public string TrimOne(string str)
         {
-            return str.TrimEnd('o', 'a', 'g').TrimStart('H', 'j', 'c');
+            string str1 = str.Substring(1, str.Length - 2);
+            return str1;
+            //return str.TrimEnd('o', 'a', 'g').TrimStart('H', 'j', 'c');
         }
 
         //String Warmup 8 
@@ -94,20 +101,23 @@ namespace WARMUPS
         //String Warmup 10
         public string RotateRight2(string str)
         {
-            if (str.Length > 4)
-            {
-                string sub1 = str.Substring(3, 2);
-                return str.Insert(0, sub1).Remove(5, 2);
-            }
-            else if (str.Length > 2)
-            {
-                string sub = str.Substring(0, 2);
-                return str.Remove(0, 2).Insert(2, sub);
-            }
-            else
-            {
-                return str.Substring(0, 2);
-            }
+            string strEnd = str.Substring(str.Length - 2, 2);
+            string str1 = strEnd + str.Substring(0, str.Length - 2);
+            return str1;
+            //if (str.Length > 4)
+            //{
+            //    string sub1 = str.Substring(3, 2);
+            //    return str.Insert(0, sub1).Remove(5, 2);
+            //}
+            //else if (str.Length > 2)
+            //{
+            //    string sub = str.Substring(0, 2);
+            //    return str.Remove(0, 2).Insert(2, sub);
+            //}
+            //else
+            //{
+            //    return str.Substring(0, 2);
+            //}
         }
 
         // String Warmup 11
@@ -156,16 +166,15 @@ namespace WARMUPS
         //String Warmup 15
         public string TakeTwoFromPosition(string str, int n)
         {
+            string str1 = str.Substring(0, 2);
+            string str2 = str.Substring(n, 2);
 
-            if (n > 2)
+            if (str2.Length < 2)
             {
-                return str.Substring(0, 2);
+                return str1;
             }
-            else
-            {
-                string str2 = str.Substring(n, 2);
                 return str2;
-            }
+
         }
 
         //String Warmup 16
@@ -370,7 +379,7 @@ namespace WARMUPS
         //Cond Warmup 2
         public bool CanSleepIn(bool isWeekday, bool isVacation)
         {
-            if (isWeekday == true)
+            if (isWeekday)
             {
                 return false;
             }
@@ -617,7 +626,7 @@ namespace WARMUPS
             {
                 return false;
             }
-            else if ((a >= 13 && a < 20) || (b >= 13 && b < 20))
+            if ((a >= 13 && a < 20) || (b >= 13 && b < 20))
             {
                 return true;
             }
@@ -750,13 +759,16 @@ namespace WARMUPS
         //Logic warmup 1
         public bool GreatParty(int cigars, bool isWeekend)
         {
-            if (cigars >= 40 && cigars <= 60 && isWeekend == false)
+            if (cigars >= 40)
             {
-                return true;
-            }
-            else if (cigars >= 40 && isWeekend == true)
-            {
-                return true;
+                if (isWeekend)
+                {
+                    return true;
+                }
+                if (cigars >= 40 && cigars <= 60)
+                {
+                    return true;
+                }
             }
             return false;
         }
@@ -779,28 +791,6 @@ namespace WARMUPS
             return no;
         }
 
-        //Logic Warmup 4
-        public int CaughtSpeeding(int speed, bool isBirthday)
-        {
-            int no = 0;
-            int smallt = 1;
-            int bigt = 2;
-
-            if (speed > 60 && speed < 81)
-            {
-                if (isBirthday == true && speed > 86)
-                {
-                    return bigt;
-                }
-                else if (isBirthday == true && speed < 66)
-                {
-                    return no;
-                }
-                return smallt;
-            }
-            return no;
-        }
-
         //Logic Warmup 3
         public bool PlayOutside(int temp, bool isSummer)
         {
@@ -813,6 +803,34 @@ namespace WARMUPS
                 return true;
             }
             return false;
+        }
+
+        //Logic Warmup 4
+        public int CaughtSpeeding(int speed, bool isBirthday)
+        {
+            if (speed <= 60)
+            {
+                return 0;
+            }
+            else if (speed > 60 && speed <= 80)
+            {
+                if (isBirthday)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+            else
+            {
+                if (isBirthday)
+                {
+                    return 1;
+                }
+                return 2;
+            }
         }
 
         //Logic Warmup 5
